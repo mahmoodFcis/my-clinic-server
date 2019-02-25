@@ -1,6 +1,7 @@
 const express=require("express");
 const router=express.Router();
-const Clinic=require("../models/clinic")
+const Clinic=require("../models/clinic");
+const authMiddleware=require("../middleware/authentication.middleware");
 router.get('/', async (req,res)=>{
 
     const clinics=await Clinic.find({});
@@ -8,7 +9,7 @@ router.get('/', async (req,res)=>{
 
 });
 
-router.post("/",async (req,res)=>{
+router.post("/",authMiddleware,async (req,res)=>{
 
     const c=req.body;
     var clinic=new Clinic({clinicName:c.clinicName,openTime:c.openTime,closeTime:c.closeTime});

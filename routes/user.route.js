@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const User= require("../models/user");
 const bcrypt=require("bcrypt");
-router.get("/login",async (req,res)=>{
+router.post("/login",async (req,res)=>{
 
     if(req.body)
     {
