@@ -7,8 +7,8 @@ const clinicShema=new schema({
         required:true,
         minlength:10
     },
-    openTime:Number,
-    closeTime:Number,
+    openTime:String,
+    closeTime:String,
     address:String
 
 });

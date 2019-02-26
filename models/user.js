@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 const jwt=require("jsonwebtoken");
 const config=require("config");
-const bcrypt=require("bcrypt")
+
 /// definition schema of the user
 const userSchema = new mongoose.Schema({
     name: {
@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema({
       required: true,
       minlength: 5,
       maxlength: 50
+    },
+    userName:{
+      type:String,
+      required:true
     },
     email: {
       type: String,
@@ -30,7 +34,7 @@ const userSchema = new mongoose.Schema({
   
 
 userSchema.methods.createUser=async function(){
-  this.password=await bcrypt.hash(this.password,bcrypt.genSaltSync());
+ 
   await this.save();
 }
 userSchema.methods.generateAuthenticationToken=function(){
